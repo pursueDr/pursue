@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: "nginxdeploy"
+    name: jinsique
+  name: "nginxdeploy"
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: "nginxdeploy"
+      name: jinsique
+  strategy: 
+    rollingUpdate:         
+      maxSurge: 2         # 滚动升级中最大可以临时扩容多少个pod
+      maxUnavailable: 80% #滚动升级中最多可以有多少个pod不可用
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: "nginxdeploy"
+        name: jinsique
+    spec:
+      containers:
+      - image: nginx:1.21
+        name: nginx
+        resources: {}
+status: {}

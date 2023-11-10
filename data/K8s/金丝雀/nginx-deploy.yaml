@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: "nginxdeploy"
+    name: jinsique
+  name: "nginxdeploy"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "nginxdeploy"
+      name: jinsique
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: "nginxdeploy"
+        name: jinsique
+    spec:
+      containers:
+      - image: nginx:1.21
+        name: nginx
+        resources: {}
+status: {}

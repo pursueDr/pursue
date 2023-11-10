@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2010a1nfs
+spec:
+  selector:
+    matchLabels:
+      app: 2010a1nfs
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: 2010a1nfs
+    spec:
+      volumes:
+        - name: 2010a1
+          persistentVolumeClaim:
+            claimName: 2010a1
+      containers:
+      - name: 2010a1nfs
+        image: nginx:1.20.1
+        volumeMounts:
+        - name: 2010a1
+          mountPath: /usr/share/nginx/html

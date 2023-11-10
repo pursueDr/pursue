@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress  
+metadata:
+  name: tomcat
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: "www.chenzihao.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: tomcatsvc
+            port:
+              number: 81

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ng1
+  name: ng1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ng1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ng1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: 
+          requests: 
+            cpu: "0.1"
+            memory: "64Mi"
+          limits:
+            cpu: "0.2"
+            memory: "300Mi" 
+status: {}
